@@ -20,3 +20,4 @@ This is yet another implementation of work-stealing threadpool in C++. Internal 
 ## Oddity
 * Instead of using the standard C++11 template library, most features are implemented independently in juwhan_std.h. In the course of development, it is noted that the level of completion for the standard template library varies among OSs(especially in mobile platform), and was decided to provide an independent one.
 * Namespace **juwhan**. Simply, I could not come up with a better namespace and juwhan is my name. Feel free to search and destroy the namespace and change it to your name or something more suitable.
+* Reimplementation of thread and threadlocal classes. Again, availability of the classes in the standard template library varies. Hence, reimplemented using pthread(which is almost universally available).
