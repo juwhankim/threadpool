@@ -1,0 +1,3 @@
+g++ -std=c++11 -c -o logger.o logger.cpp
+g++ -std=c++11 -c -o logger_test.o logger_test.cpp
+g++ -std=c++11 logger.o logger_test.o -o logger_test
