@@ -1,9 +1,8 @@
 #include "threadpool.h"
 
-namespace juwhan
-{
+namespace juwhan {
 
-	// The main default pool.
+    // The main default pool.
     threadpool threadpool::instance;
 
 }
