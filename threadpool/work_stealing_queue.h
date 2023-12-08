@@ -95,14 +95,14 @@ namespace juwhan {
         char pad0[JUWHAN_CACHELINE_SIZE];   // Add padding to prevent false sharing.
         ::std::atomic<aligned_circular_array<T, Align> *> array;
         char pad1[JUWHAN_CACHELINE_SIZE];   // Add padding to prevent false sharing.
-        ::std::atomic <size_t> top;
+        ::std::atomic<size_t> top;
         char pad2[JUWHAN_CACHELINE_SIZE];   // Add padding to prevent false sharing.
-        ::std::atomic <size_t> bottom;
+        ::std::atomic<size_t> bottom;
         char pad3[JUWHAN_CACHELINE_SIZE];   // Add padding to prevent false sharing.
         pthread_rwlock_t rwlock;
     public:
         using array_type = aligned_circular_array<T, Align>;
-        using element_type = aligned_element<::std::atomic < T>, Align>;
+        using element_type = aligned_element<::std::atomic<T>, Align>;
 
 
         work_stealing_queue(size_t requested_size) : array{new array_type{requested_size}}, top{1}, bottom{1} {

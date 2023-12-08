@@ -93,13 +93,12 @@ namespace juwhan {
                 ::juwhan::function_type_deduction<typename ::juwhan::decay<FF>::type>::is_static ||
                 ::juwhan::function_type_deduction<typename ::juwhan::decay<FF>::type>::is_functor>::type>
         parameter_pack(FF &&func_, AA &&... args)
-                : parameter_pack_helper<1, A...>(forward < AA > (args)...), func(forward < FF > (func_)) {};
+                : parameter_pack_helper<1, A...>(forward<AA>(args)...), func(forward<FF>(func_)) {};
 
         // 2. The member function case.
         template<typename FF, typename T, typename... AA, typename = typename juwhan::enable_if<::juwhan::function_type_deduction<typename ::juwhan::decay<FF>::type>::is_member>::type>
         parameter_pack(FF &&func_, T &&this_, AA &&... args)
-                :  parameter_pack_helper<1, A...>(forward < AA > (args)...),
-                   func(forward < T > (this_), forward < FF > (func_)) {};
+                :  parameter_pack_helper<1, A...>(forward<AA>(args)...), func(forward<T>(this_), forward<FF>(func_)) {};
 
 
 // Operator().
@@ -159,8 +158,7 @@ namespace juwhan {
 // Parameter pack for R() type.
     template<typename F>
     struct parameter_pack<F> {
-        static constexpr size_t
-        arity = 0;
+        static constexpr size_t arity = 0;
         using this_type = parameter_pack<F>;
         using result_type = typename ::juwhan::function_traits<F>::result_type;;
         fast_function<typename ::juwhan::function_type_deduction<F>::simplified_traits> func;
@@ -176,12 +174,12 @@ namespace juwhan {
                 ::juwhan::function_type_deduction<typename ::juwhan::decay<FF>::type>::is_static ||
                 ::juwhan::function_type_deduction<typename ::juwhan::decay<FF>::type>::is_functor>::type>
         parameter_pack(FF &&func_)
-                : func(forward < FF > (func_)) {};
+                : func(forward<FF>(func_)) {};
 
         // 2. The member function case.
         template<typename FF, typename T, typename = typename juwhan::enable_if<::juwhan::function_type_deduction<typename ::juwhan::decay<FF>::type>::is_member>::type>
         parameter_pack(FF &&func_, T &&this_)
-                :  func(forward < T > (this_), forward < FF > (func_)) {};
+                :  func(forward<T>(this_), forward<FF>(func_)) {};
 
         // Operator().
         // Returning something.
@@ -212,7 +210,7 @@ namespace juwhan {
         void *pack = malloc(
                 sizeof(parameter_pack<typename ::juwhan::decay<F>::type, typename ::juwhan::decay<A>::type...>));
         new(pack) parameter_pack<typename ::juwhan::decay<F>::type, typename ::juwhan::decay<A>::type...>{
-                forward < F > (func_), forward < A > (args)...};
+                forward<F>(func_), forward<A>(args)...};
         return pack;
     };
 
@@ -224,14 +222,14 @@ namespace juwhan {
         void *pack = malloc(
                 sizeof(parameter_pack<typename ::juwhan::decay<F>::type, typename ::juwhan::decay<A>::type...>));
         new(pack) parameter_pack<typename ::juwhan::decay<F>::type, typename ::juwhan::decay<A>::type...>{
-                forward < F > (func_), forward < T > (this_), forward < A > (args)...};
+                forward<F>(func_), forward<T>(this_), forward<A>(args)...};
         return pack;
     };
 
 
 // We need to unpack the void* pack before doing something with it.
 // It is simple reinterpret_cast of a pointer.
-// 
+//
 // When F is either a static function or a functor.
     template<typename F, typename... A>
     inline

@@ -1,4 +1,3 @@
-
 #ifndef juwhan_greedy_greedy_threadpool_h
 #define juwhan_greedy_greedy_threadpool_h
 
@@ -35,9 +34,9 @@ namespace juwhan {
         using receipt_type = greedy_threadpool_receit<T>;
 
         struct join_guard {
-            ::std::vector <thread> &threads;
+            ::std::vector<thread> &threads;
 
-            explicit join_guard(::std::vector <thread> &threads_) : threads(threads_) {};
+            explicit join_guard(::std::vector<thread> &threads_) : threads(threads_) {};
 
 
             ~join_guard() {
@@ -55,18 +54,17 @@ namespace juwhan {
         char pad0[JUWHAN_CACHELINE_SIZE];
         ::std::atomic<bool> done;
         char pad1[JUWHAN_CACHELINE_SIZE];
-        ::std::vector <thread> threads;
+        ::std::vector<thread> threads;
         char pad2[JUWHAN_CACHELINE_SIZE];
         ::std::mutex mut;
         char pad3[JUWHAN_CACHELINE_SIZE];
         ::std::condition_variable cond;
         char pad4[JUWHAN_CACHELINE_SIZE];
         // The following are read only. No need to prevent false sharing.
-        ::std::vector <queue_type_ptr> master_queues;
-        ::std::vector<::std::vector < queue_type_ptr>> master_neighboring_queues;
+        ::std::vector<queue_type_ptr> master_queues;
+        ::std::vector<::std::vector<queue_type_ptr>> master_neighboring_queues;
         threadlocal<queue_type_ptr> my_queue;
-        threadlocal<::std::vector < queue_type_ptr>*>
-        neighboring_queues;
+        threadlocal<::std::vector<queue_type_ptr> *> neighboring_queues;
         join_guard joiner;
 
         void make_master_queues(size_t thread_count) {
@@ -77,7 +75,7 @@ namespace juwhan {
             grd_tp_info("Master queue is made.");
             // Make neighboring queus and put them in the master.
             for (auto i = 0; i < thread_count; ++i) {
-                ::std::vector <queue_type_ptr> tmp_neighboring_queues;
+                ::std::vector<queue_type_ptr> tmp_neighboring_queues;
                 for (auto j = 0; j < thread_count; ++j) {
                     if (j != i) {
                         tmp_neighboring_queues.push_back(master_queues[j]);
@@ -227,7 +225,7 @@ namespace juwhan {
             using result_type = typename task_type::result_type;
             grd_tp_info("I'll submit a task");
             // Make a task.
-            thread_task *new_task = make_task(juwhan::forward < F > (_func), juwhan::forward < A > (args)...);
+            thread_task *new_task = make_task(juwhan::forward<F>(_func), juwhan::forward<A>(args)...);
             grd_tp_info("I just generated a task.");
             // Compose a receit.
             greedy_threadpool_receit<result_type> receit{(reinterpret_cast<task_type *>(new_task))->ret, *this};

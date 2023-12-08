@@ -5,7 +5,7 @@
 
 #include"logger.h"
 
-// Change the following macro value to remove unnexessary logging functions at compile time.
+// Change the following macro value to remove unnecessary logging functions at compile time.
 // level 4 emits only fatal and level 1 emits everything.
 // info -> debug -> warning -> fatal.
 #define LOG_LEVEL_M 1

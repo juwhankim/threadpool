@@ -28,7 +28,7 @@ namespace juwhan {
 
 // Function return type.
     struct function_return_type_base_implementation {
-        ::std::atomic <size_t> _shared_count;
+        ::std::atomic<size_t> _shared_count;
         char pad0[JUWHAN_CACHELINE_SIZE];
         ::std::atomic<bool> _is_set;
         char pad1[JUWHAN_CACHELINE_SIZE];
@@ -444,14 +444,13 @@ namespace juwhan {
                 function_type_deduction<typename decay<FF>::type>::is_static ||
                 function_type_deduction<typename decay<FF>::type>::is_functor>::type>
         thread_task_implementation(FF &&func_, AA &&... args)
-                : thread_task_helper<1, A...>(::juwhan::forward < AA > (args)...),
-                  func(::juwhan::forward < FF > (func_)) {};
+                : thread_task_helper<1, A...>(::juwhan::forward<AA>(args)...), func(::juwhan::forward<FF>(func_)) {};
 
         // 2. The member function case.
         template<typename FF, typename T, typename... AA, typename = typename enable_if<function_type_deduction<typename decay<FF>::type>::is_member>::type>
         thread_task_implementation(FF &&func_, T &&this_, AA &&... args)
-                :  thread_task_helper<1, A...>(::juwhan::forward < AA > (args)...),
-                   func(::juwhan::forward < T > (this_), ::juwhan::forward < FF > (func_)) {};
+                :  thread_task_helper<1, A...>(::juwhan::forward<AA>(args)...),
+                   func(::juwhan::forward<T>(this_), ::juwhan::forward<FF>(func_)) {};
 
 
 
@@ -514,8 +513,7 @@ namespace juwhan {
 // thread_task implementation, where the function DOES NOT take parameters.
     template<typename F>
     struct thread_task_implementation<F> : public thread_task {
-        static constexpr size_t
-        arity = 0;
+        static constexpr size_t arity = 0;
         using this_type = thread_task_implementation<F>;
         using result_type = typename function_traits<F>::result_type;;
         function_return_type<result_type> ret;
@@ -533,12 +531,12 @@ namespace juwhan {
                 function_type_deduction<typename decay<FF>::type>::is_static ||
                 function_type_deduction<typename decay<FF>::type>::is_functor>::type>
         thread_task_implementation(FF &&func_)
-                : func(::juwhan::forward < FF > (func_)) {};
+                : func(::juwhan::forward<FF>(func_)) {};
 
         // 2. The member function case.
         template<typename FF, typename T, typename = typename enable_if<function_type_deduction<typename decay<FF>::type>::is_member>::type>
         thread_task_implementation(FF &&func_, T &&this_)
-                :  func(::juwhan::forward < T > (this_), ::juwhan::forward < FF > (func_)) {};
+                :  func(::juwhan::forward<T>(this_), ::juwhan::forward<FF>(func_)) {};
 
 
         // Execute().
@@ -582,7 +580,7 @@ namespace juwhan {
         auto thread_task_pointer = malloc(
                 sizeof(thread_task_implementation<typename decay<F>::type, typename decay<A>::type...>));
         new(thread_task_pointer) thread_task_implementation<typename decay<F>::type, typename decay<A>::type...>{
-                ::juwhan::forward < F > (func_), ::juwhan::forward < A > (args)...};
+                ::juwhan::forward<F>(func_), ::juwhan::forward<A>(args)...};
         return reinterpret_cast<thread_task *>(thread_task_pointer);
     };
 
@@ -595,7 +593,7 @@ namespace juwhan {
         auto thread_task_pointer = malloc(
                 sizeof(thread_task_implementation<typename decay<F>::type, typename decay<A>::type...>));
         new(thread_task_pointer) thread_task_implementation<typename decay<F>::type, typename decay<A>::type...>{
-                ::juwhan::forward < F > (func_), ::juwhan::forward < T > (this_), ::juwhan::forward < A > (args)...};
+                ::juwhan::forward<F>(func_), ::juwhan::forward<T>(this_), ::juwhan::forward<A>(args)...};
         return reinterpret_cast<thread_task *>(thread_task_pointer);
     };
 

@@ -150,18 +150,12 @@ namespace juwhan {
             return *value;
         };
 
-        T &get() const
-
-        noexcept
-        {
+        T &get() const noexcept {
             T *value = reinterpret_cast<T *>(pthread_getspecific(key));
             return *value;
         };
 
-        void set(T &value_)
-
-        noexcept
-        {
+        void set(T &value_) noexcept {
             pthread_setspecific(key, &value_);
         };
 
@@ -224,18 +218,12 @@ namespace juwhan {
             return value;
         };
 
-        T *get() const
-
-        noexcept
-        {
+        T *get() const noexcept {
             T *value = reinterpret_cast<T *>(pthread_getspecific(key));
             return value;
         };
 
-        void set(T *value_)
-
-        noexcept
-        {
+        void set(T *value_) noexcept {
             pthread_setspecific(key, value_);
         };
 
