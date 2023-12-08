@@ -410,7 +410,7 @@ namespace juwhan {
                 // We need to find the location of the corresponding string parameter for this element in the pack.
                 constexpr unsigned int str_loc = locate<typename Head::text_type, T...>::value;
                 // Now, get it.
-                tuple < T...> tpl{messages...};
+                tuple<T...> tpl{messages...};
                 auto fetched_message = std::get<str_loc>(tpl);
                 return element(fetched_message);
             }
@@ -501,7 +501,7 @@ namespace juwhan {
                 // We need to find the location of the corresponding string parameter for this element in the pack.
                 constexpr unsigned int str_loc = locate<typename Head::text_type, T...>::value;
                 // Now, get it.
-                tuple < T...> tpl{messages...};
+                tuple<T...> tpl{messages...};
                 auto fetched_message = std::get<str_loc>(tpl);
                 return element(fetched_message);
             }
@@ -599,7 +599,7 @@ namespace juwhan {
                 // We need to find the location of the corresponding string parameter for this element in the pack.
                 constexpr unsigned int str_loc = locate<typename Head::text_type, T...>::value;
                 // Now, get it.
-                tuple < T...> tpl{messages...};
+                tuple<T...> tpl{messages...};
                 auto fetched_message = std::get<str_loc>(tpl);
                 return element(fetched_message);
             }
@@ -700,7 +700,7 @@ namespace juwhan {
                 // We need to find the location of the corresponding string parameter for this element in the pack.
                 constexpr unsigned int str_loc = locate<typename Head::text_type, T...>::value;
                 // Now, get it.
-                tuple < T...> tpl{messages...};
+                tuple<T...> tpl{messages...};
                 auto fetched_message = std::get<str_loc>(tpl);
                 return element(fetched_message);
             }
@@ -757,24 +757,3 @@ namespace juwhan {
     } // End of namespace logger.
 } // End of namespace juwhan.
 #endif
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

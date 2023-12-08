@@ -60,7 +60,7 @@ namespace juwhan {
         void clog_f(default_log_format &log_line, const string &file_name, const string &line_number,
                     const string &message) {
             // Guard against racing.
-            std::lock_guard <std::mutex> lock(log_mutex);
+            std::lock_guard<std::mutex> lock(log_mutex);
             if (log_line.priority >= log_level)
                 cout << log_line(file_string{file_name}, line_string{line_number}, message_string{message}) << endl;
         }
@@ -74,7 +74,7 @@ namespace juwhan {
         void
         log_f(default_log_format &log_line, const string &file_name, const string &line_number, const string &message) {
             // Guard against racing.
-            std::lock_guard <std::mutex> lock(log_mutex);
+            std::lock_guard<std::mutex> lock(log_mutex);
             if (log_line.priority >= log_level) {
                 if (user_log_file) {
                     user_log_file << log_line(file_string{file_name}, line_string{line_number}, message_string{message})
