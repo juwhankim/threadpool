@@ -20,11 +20,18 @@ message(STATUS CMAKE_BUILD_TYPE)                        # -- CMAKE_BUILD_TYPE
 message(STATUS ${CMAKE_BUILD_TYPE})                     # -- Debug
 message(STATUS "Configuration: ${CMAKE_BUILD_TYPE}")    # -- Configuration: Debug
 
+#clang -std=c++11
+#greedy_threadpool_test.cpp
+#greedy_threadpool.cpp
+# -o greedy_threadpool_test -I../logger -lpthread -lstdc++ -O3
+include_directories(
+        ../
+)
 # Add an executable with the above sources
 add_executable(
-        logger_test
-        logger.cpp
-        logger_test.cpp)
+        threadpool_test
+        threadpool_test.cpp
+)
 
 #add_library(
 #        logger_test
