@@ -391,14 +391,3 @@ namespace juwhan {
 }  // End of namespace threadpool.
 
 #endif
-
-
-
-
-
-
-
-
-
-
-

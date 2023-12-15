@@ -52,22 +52,3 @@ int main() {
     cfatal_if(1 > 2, "This should NOT print, logging level is satisfied but the condition is false.");
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

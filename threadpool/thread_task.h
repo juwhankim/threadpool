@@ -615,20 +615,3 @@ namespace juwhan {
 #undef FUNC_MACRO
 
 #endif
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
