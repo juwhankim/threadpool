@@ -1,6 +1,6 @@
-# #threadpool
+# threadpool
 
-##Outline
+## Outline
 This is yet another implementation of work-stealing threadpool in C++. Internal working follows the common logic. However the implementation tries to
 
 - Properly align array structures.
