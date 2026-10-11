@@ -1,0 +1,13 @@
+Workers=16, CPU tasks=4096, rounds/task=20000, repetitions=9 (median, one warmup, checksums verified)
+Pool construction excluded; submission, execution and waiting included.
+Tiny-task speedup uses the serial tiny-task baseline.
+Case                              ms    work items/s      speedup
+serial CPU                   128.990           31754      1.0000x
+serial tiny tasks              0.006      5285161290      1.0000x
+normal external CPU           17.326          236405      7.4448x
+normal fork/join CPU           8.877          461433     14.5313x
+normal tiny tasks             40.626          806569      0.0002x
+greedy external CPU           17.298          236792      7.4570x
+greedy fork/join CPU           8.801          465391     14.6559x
+greedy tiny tasks             44.076          743447      0.0001x
+CPU checksum=17889989153623586025, tiny checksum=13608962890975035392

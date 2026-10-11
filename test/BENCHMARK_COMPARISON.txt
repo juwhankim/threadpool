@@ -1,0 +1,89 @@
+Pair 1 - before
+Workers=16, CPU tasks=4096, rounds/task=20000, repetitions=9 (median, one warmup, checksums verified)
+Pool construction excluded; submission, execution and waiting included.
+Tiny-task speedup uses the serial tiny-task baseline.
+Case                              ms    work items/s      speedup
+serial CPU                   128.946           31765      1.0000x
+serial tiny tasks              0.006      5201269841      1.0000x
+normal external CPU           20.868          196280      6.1790x
+normal fork/join CPU           8.817          464547     14.6243x
+normal tiny tasks             44.803          731383      0.0001x
+greedy external CPU           17.247          237484      7.4762x
+greedy fork/join CPU           8.726          469380     14.7765x
+greedy tiny tasks             45.715          716789      0.0001x
+CPU checksum=17889989153623586025, tiny checksum=13608962890975035392
+
+Pair 1 - after
+Workers=16, CPU tasks=4096, rounds/task=20000, repetitions=9 (median, one warmup, checksums verified)
+Pool construction excluded; submission, execution and waiting included.
+Tiny-task speedup uses the serial tiny-task baseline.
+Case                              ms    work items/s      speedup
+serial CPU                   129.011           31749      1.0000x
+serial tiny tasks              0.006      5285161290      1.0000x
+normal external CPU           16.926          241993      7.6220x
+normal fork/join CPU           8.927          458812     14.4511x
+normal tiny tasks             38.654          847715      0.0002x
+greedy external CPU           16.340          250669      7.8952x
+greedy fork/join CPU           8.902          460147     14.4931x
+greedy tiny tasks             39.822          822872      0.0002x
+CPU checksum=17889989153623586025, tiny checksum=13608962890975035392
+
+Pair 2 - after
+Workers=16, CPU tasks=4096, rounds/task=20000, repetitions=9 (median, one warmup, checksums verified)
+Pool construction excluded; submission, execution and waiting included.
+Tiny-task speedup uses the serial tiny-task baseline.
+Case                              ms    work items/s      speedup
+serial CPU                   129.052           31739      1.0000x
+serial tiny tasks              0.006      5285161290      1.0000x
+normal external CPU           16.689          245433      7.7328x
+normal fork/join CPU           8.910          459708     14.4839x
+normal tiny tasks             39.933          820568      0.0002x
+greedy external CPU           16.477          248587      7.8322x
+greedy fork/join CPU           8.665          472706     14.8934x
+greedy tiny tasks             38.699          846738      0.0002x
+CPU checksum=17889989153623586025, tiny checksum=13608962890975035392
+
+Pair 2 - before
+Workers=16, CPU tasks=4096, rounds/task=20000, repetitions=9 (median, one warmup, checksums verified)
+Pool construction excluded; submission, execution and waiting included.
+Tiny-task speedup uses the serial tiny-task baseline.
+Case                              ms    work items/s      speedup
+serial CPU                   129.088           31730      1.0000x
+serial tiny tasks              0.006      5285161290      1.0000x
+normal external CPU           19.960          205205      6.4672x
+normal fork/join CPU           8.787          466122     14.6901x
+normal tiny tasks             43.755          748892      0.0001x
+greedy external CPU           17.413          235232      7.4135x
+greedy fork/join CPU           8.913          459553     14.4831x
+greedy tiny tasks             45.543          719491      0.0001x
+CPU checksum=17889989153623586025, tiny checksum=13608962890975035392
+
+Pair 3 - before
+Workers=16, CPU tasks=4096, rounds/task=20000, repetitions=9 (median, one warmup, checksums verified)
+Pool construction excluded; submission, execution and waiting included.
+Tiny-task speedup uses the serial tiny-task baseline.
+Case                              ms    work items/s      speedup
+serial CPU                   129.155           31714      1.0000x
+serial tiny tasks              0.006      5201269841      1.0000x
+normal external CPU           20.319          201587      6.3564x
+normal fork/join CPU           8.800          465470     14.6772x
+normal tiny tasks             45.857          714569      0.0001x
+greedy external CPU           17.542          233493      7.3625x
+greedy fork/join CPU           8.694          471124     14.8555x
+greedy tiny tasks             42.967          762634      0.0001x
+CPU checksum=17889989153623586025, tiny checksum=13608962890975035392
+
+Pair 3 - after
+Workers=16, CPU tasks=4096, rounds/task=20000, repetitions=9 (median, one warmup, checksums verified)
+Pool construction excluded; submission, execution and waiting included.
+Tiny-task speedup uses the serial tiny-task baseline.
+Case                              ms    work items/s      speedup
+serial CPU                   129.047           31740      1.0000x
+serial tiny tasks              0.006      5371803279      1.0000x
+normal external CPU           16.938          241829      7.6189x
+normal fork/join CPU           8.885          461017     14.5246x
+normal tiny tasks             38.509          850925      0.0002x
+greedy external CPU           16.420          249453      7.8592x
+greedy fork/join CPU           8.891          460706     14.5148x
+greedy tiny tasks             43.540          752592      0.0001x
+CPU checksum=17889989153623586025, tiny checksum=13608962890975035392

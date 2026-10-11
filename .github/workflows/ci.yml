@@ -1,0 +1,20 @@
+name: Standalone C++17 checks
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  build:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Configure tests and example
+        run: cmake -S . -B build -DCMAKE_BUILD_TYPE=Release -DNNN_THREADPOOL_BUILD_EXAMPLES=ON
+      - name: Build with strict test warnings
+        run: cmake --build build --config Release --parallel
+      - name: Run correctness tests
+        run: ctest --test-dir build -C Release --output-on-failure

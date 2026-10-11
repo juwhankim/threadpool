@@ -1,0 +1,49 @@
+NFKC UTF-8 normalization + word-like byte spans; generated multilingual corpus.
+Five timed repetitions after warmup; median reported; every output checked against serial.
+Corpus generation, pool construction, verification and final output destruction excluded.
+Output allocation, submission, processing, result collection and idle wait included.
+
+short messages: 8192 documents, 2675224 input bytes
+Mode     Workers   Batch          ms       MiB/s    documents/s   Speedup
+serial         1       0      27.668        92.2      296085.3      1.00x
+normal         1       1      37.120        68.7      220690.2      0.75x
+normal         1       8      29.416        86.7      278490.7      0.94x
+normal         1      32      27.922        91.4      293386.6      0.99x
+greedy         1       1      37.477        68.1      218590.3      0.74x
+greedy         1       8      28.631        89.1      286120.4      0.97x
+greedy         1      32      27.511        92.7      297771.8      1.01x
+normal         4       1      17.820       143.2      459695.3      1.55x
+normal         4       8       8.163       312.5     1003564.9      3.39x
+normal         4      32       7.736       329.8     1058986.3      3.58x
+greedy         4       1      17.396       146.7      470899.3      1.59x
+greedy         4       8       7.880       323.8     1039607.1      3.51x
+greedy         4      32       7.437       343.1     1101534.2      3.72x
+normal        16       1      20.849       122.4      392913.0      1.33x
+normal        16       8       5.174       493.1     1583362.3      5.35x
+normal        16      32       3.152       809.5     2599232.2      8.78x
+greedy        16       1      20.012       127.5      409360.5      1.38x
+greedy        16       8       4.917       518.9     1666022.7      5.63x
+greedy        16      32       2.891       882.6     2834013.7      9.57x
+
+long articles: 512 documents, 10618315 input bytes
+Mode     Workers   Batch          ms       MiB/s    documents/s   Speedup
+serial         1       0      98.076       103.3        5220.4      1.00x
+normal         1       1      99.114       102.2        5165.8      0.99x
+normal         1       8      97.301       104.1        5262.0      1.01x
+normal         1      32      97.752       103.6        5237.8      1.00x
+greedy         1       1      96.732       104.7        5293.0      1.01x
+greedy         1       8      96.042       105.4        5331.0      1.02x
+greedy         1      32      96.609       104.8        5299.7      1.02x
+normal         4       1      25.635       395.0       19972.7      3.83x
+normal         4       8      26.000       389.5       19692.1      3.77x
+normal         4      32      26.072       388.4       19637.5      3.76x
+greedy         4       1      25.073       403.9       20420.8      3.91x
+greedy         4       8      24.880       407.0       20578.9      3.94x
+greedy         4      32      25.033       404.5       20452.8      3.92x
+normal        16       1       8.492      1192.5       60295.6     11.55x
+normal        16       8       8.791      1151.9       58242.0     11.16x
+normal        16      32       8.675      1167.3       59020.2     11.31x
+greedy        16       1       8.588      1179.2       59621.5     11.42x
+greedy        16       8       9.290      1090.0       55113.6     10.56x
+greedy        16      32       8.673      1167.6       59035.8     11.31x
+PASS: fixtures, normalized bytes, spans and document order match.
